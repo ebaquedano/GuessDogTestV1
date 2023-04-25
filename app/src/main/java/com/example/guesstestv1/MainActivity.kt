@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,13 +17,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -72,7 +79,9 @@ fun funcionConColumnas(){
         Text(text = "Guess Dog",
             color = Color.White,
             fontSize = 40.sp,
-            modifier = Modifier.fillMaxWidth().padding(PaddingValues(top = 30.dp, bottom = 30.dp)),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(PaddingValues(top = 30.dp, bottom = 30.dp)),
             textAlign = TextAlign.Center)
 
             //Dejo este espacio para remplazar por Imag
@@ -88,21 +97,34 @@ fun funcionConColumnas(){
             Text(text = "Adivina la raza del perro",
                 fontSize = 24.sp,
                 color = Color.White,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 20.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp, vertical = 20.dp),
                 textAlign = TextAlign.Center)
         }
 
-        Text(text = "Raza del perro: ",
+        Text(text = " - Raza del perro: ",
             fontSize = 18.sp,
             color = Color.White)
 
-        Text(text = "Nombre del perro: ",
+        Text(text = " - Nombre del perro: ",
             fontSize = 18.sp,
             color = Color.White)
-        
-        Text(text = "Puntos: ",
-            fontSize = 18.sp,
-            color = Color.White)
+
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)){
+
+            Text(text = "Puntos actuales: ",
+                fontSize = 16.sp,
+                color = Color.White)
+
+            Text(text = "Puntos maximo: ",
+                fontSize = 16.sp,
+                color = Color.White)
+        }
+
 
             Row() {
                 Button(
@@ -111,7 +133,10 @@ fun funcionConColumnas(){
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
+                    Icon(imageVector = Icons.Default.Refresh, contentDescription = null )
                     Text(text = "Actualizar imagen",
+                        color = Color.White,
+                        fontSize = 17.sp
                     )
                 }
             }
